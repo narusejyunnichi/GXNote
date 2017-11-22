@@ -14,12 +14,18 @@ class ViewController: UIViewController,GXNoteWorkDeleagte {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "swfit4.0"
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(keyBoardShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        center.addObserver(self, selector: #selector(keyBoardhide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         let creatNote = UITapGestureRecognizer(target: self, action: #selector(createNewNote(sender:)))
         self.view.addGestureRecognizer(creatNote)
     }
     
     @objc func createNewNote(sender:UITapGestureRecognizer){
-        self.view.endEditing(true)
+        if iskeyBoardShow {
+            self.view.endEditing(true)
+            return
+        }
         let center = sender.location(in: self.view)
         
         let noteStyle = GXNoteStyle()
@@ -31,6 +37,15 @@ class ViewController: UIViewController,GXNoteWorkDeleagte {
         self.view.addSubview(note)
     }
     
+    @objc func keyBoardShow(){
+        iskeyBoardShow = true
+    }
+    
+    @objc func keyBoardhide(){
+        iskeyBoardShow = false
+    }
+    
+    //noteView Delegate
     func noteTextDidChange(text: String, note: GXNoteView) {
         print("\(note) ------ \(text)")
     }
