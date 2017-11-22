@@ -1,0 +1,11 @@
+framework module GXNote {
+  umbrella header "GXNote.h"
+
+  export *
+  module * { export * }
+}
+
+module GXNote.Swift {
+    header "GXNote-Swift.h"
+    requires objc
+}
