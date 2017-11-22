@@ -23,7 +23,7 @@ class ViewController: UIViewController,GXNoteWorkDeleagte {
         let center = sender.location(in: self.view)
         
         let noteStyle = GXNoteStyle()
-        noteStyle.noteContentViewPlaceholder = "aaaaaaaaa"
+        noteStyle.noteContentViewPlaceholder = "bbbbbb"
         let note = GXNoteView(frame: CGRect(x: 100, y: 100, width: 200, height: 200), style: noteStyle)
         
         note.delegate = self
