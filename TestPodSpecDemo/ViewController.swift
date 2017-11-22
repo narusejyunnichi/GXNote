@@ -11,6 +11,9 @@ import GXNote
 
 class ViewController: UIViewController,GXNoteWorkDeleagte {
     
+    var iskeyBoardShow : Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "swfit4.0"
